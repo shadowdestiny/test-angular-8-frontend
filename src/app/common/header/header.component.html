@@ -1,0 +1,63 @@
+<div class="b-header-top">
+  <div class="container">
+    <div class="b-languages">
+      <ng-template ngFor let-lang [ngForOf]="languages">
+          <span class="b-language" *ngIf="lang.code !== localeId">
+            <a href="/{{lang.code}}/">{{lang.label}}</a>
+          </span>
+        <span class="b-language" *ngIf="lang.code === localeId">{{lang.label}}</span>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<header class="b-header">
+  <div class="container">
+    <nav class="navbar is-transparent is-spaced">
+      <div class="navbar-brand">
+        <a class="navbar-item" routerLink="/">
+          <img src="/assets/logo.png" alt="Awesome Rental Car">
+          <span class="b-app__name">Booking</span>
+        </a>
+        <div class="navbar-burger burger" data-target="navbarAwesomeCartRental">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+
+        </div>
+        <div class="navbar-end">
+
+          <a class="navbar-item" (click)="toggleModal()" *ngIf="!authService.isLoggedIn()">
+            <span i18n="@@Login">Login</span>
+          </a>
+
+          <a class="navbar-item" (click)="logout()" *ngIf="authService.isLoggedIn()">
+            <span i18n="@@Logout">Logout</span>
+          </a>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</header>
+
+<div class="modal" [ngClass]="{ 'is-active animated fadeIn' : isModalActive }">
+  <div class="modal-background" (click)="toggleModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" i18n="@@Login">Login</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <app-login-form></app-login-form>
+    </section>
+    <footer class="modal-card-foot">
+    </footer>
+  </div>
+</div>

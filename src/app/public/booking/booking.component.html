@@ -1,0 +1,112 @@
+<div class="container margin-top-sm margin-bottom-sm">
+  <div class="b-content">
+    <div class="content">
+      <h2 i18n="@@SeeAllTheProjects">See all the bookings</h2>
+    </div>
+
+    <div>
+      <app-time></app-time>
+    </div>
+
+    <div class="columns">
+
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <input type="text" class="input is-primary" [(ngModel)]="id" placeholder="id"/>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <input type="text" class="input is-primary" [(ngModel)]="firstName" placeholder="First Name"/>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <input type="text" class="input is-primary" [(ngModel)]="init" placeholder="init: 30-06-2019"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <div class="control">
+
+            <input type="text" class="input is-primary" [(ngModel)]="end" placeholder="end: 30-06-2019" />
+
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <div class="control">
+
+            <button type="button" class="button is-success" (click)="filter()">Filter</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter-desktop is-one-third-tablet"
+           *ngFor="let booking of bookings">
+
+        <div class="b-project b-project--list-item">
+          <div class="card">
+            <div class="card-image">
+              <!--<a href="#" routerLink="/projects/{{project.slug}}">
+                <figure class="image is-16by9">
+                  <img src="{{project.thumbnail | generateImageUrl}}"
+                       alt="">
+                </figure>
+              </a>-->
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <!--<a href="#" routerLink="/projects/{{project.slug}}" class="b-project__project-char">
+                    A
+                  </a>-->
+                </div>
+                <div class="media-content">
+                  <p class="b-project__title title is-4">
+                    {{ booking.first_name }}
+                  </p>
+
+
+                  <ul>
+                    <li>
+                      {{ booking.street_address }}
+                    </li>
+                    <li>
+                      {{ booking.booking_price }}
+                    </li>
+                    <li>
+                      {{ booking.created_at }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="b-project__content content">
+
+                <br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
